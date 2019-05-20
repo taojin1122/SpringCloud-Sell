@@ -1,0 +1,23 @@
+spring:
+  application:
+     name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/taojin1122/spring-cloud-config/
+          username: 1027679890@qq.com
+          password: xingfu?5201314
+          basedir: springCloud-Sell\config\gitconfig
+
+eureka:
+  client:
+    service-url:
+        defaultZone: http://localhost:8762/eureka
+management:
+  endpoints:
+     web:
+       exposure:
+         include: "*"
+server:
+  port: 9090

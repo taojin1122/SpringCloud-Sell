@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: order
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG
+      profile: dev
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+eureka:
+  client:
+    service-url:
+        defaultZone: http://localhost:8762/eureka/
+#  management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: bus-refresh
+
+# 超时配置
+hystrix:
+   command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 3000
+feign:
+  hystrix:
+    enabled: true
+management:
+  server:
+    servlet:
+      context-path: /

@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: order
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG
+      profile: dev
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  zipkin:
+    base-url: http://localhost:9411/zipkin/
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1   # 1表示百分百
+
+
+eureka:
+  client:
+    service-url:
+        defaultZone: http://localhost:8762/eureka/
+#  management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: bus-refresh
+
+# 超时配置
+hystrix:
+   command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 3000
+feign:
+  hystrix:
+    enabled: true
+management:
+  server:
+    servlet:
+      context-path: /
+# 修改日志级别
+logging:
+  level:
+    org.springframework.cloud.openfeign: debug
+

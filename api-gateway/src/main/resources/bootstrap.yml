@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+   config:
+    discovery:
+      enabled: true
+      service-id: CONFIG
+    profile: dev
+eureka:
+  client:
+    service-url:
+        defaultZone: http://localhost:8762/eureka
+zuul:
+  routes:
+    myProduct:  #随意自定义
+      path: /myProduct/**
+      serviceId: product
+      sensitiveHeaders:
+  # 排除某些路由
+  ignored-patterns:
+    - /**/product/list
+  # 全部服务忽略敏感头
+  sensitive-headers:
